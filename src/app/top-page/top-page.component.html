@@ -15,8 +15,8 @@
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <h2 class="text-2xl mb-4">Trending on Marketplace</h2>
         <div class="flex flex-wrap justify-between">
-          <div *ngFor='let item of items' class="w-60">
-            <a href="#" class="hover:underline">
+          <div *ngFor='let item of this.items | async' class="w-60">
+            <a href="{{item._id}}" class="hover:underline">
               <img src="{{item.image_url}}" alt="">
               <div class="mt-2">{{item.name}}</div>
               <div class="mt-2">{{item.price}}</div>
