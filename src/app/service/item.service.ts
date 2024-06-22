@@ -14,4 +14,7 @@ export class ItemService {
   getItems():Observable<Item[]> {
     return this.httpClient.get<Item[]>(this.url);
   }
+  getItemById(id: string): Observable<Item> {
+    return this.httpClient.get<Item>(this.url + '/' + id);
+  }
 }
