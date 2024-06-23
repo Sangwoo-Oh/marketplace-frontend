@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../user';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,8 +16,8 @@ export class SignUpComponent {
     password:"",
     password_confirm:"",
   }
-  submitted = false;
-  onSubmit() {
-    this.submitted = true;
+
+  signUp(form: NgForm) {
+    console.log(form.value);
   }
 }
