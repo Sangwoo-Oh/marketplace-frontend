@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,6 +13,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
+  authService: AuthService = inject(AuthService);
+  router: Router = inject(Router);
+  error:any;
   model = {
     username:"",
     email:"",
@@ -17,7 +23,16 @@ export class SignUpComponent {
     password_confirm:"",
   }
 
-  signUp(form: NgForm) {
-    console.log(form.value);
+  signUp(userData: NgForm) {
+    this.authService.signUp(userData).subscribe(
+      (result) => {
+        console.log("Success!");
+        this.router.navigate(['/sign-in']);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err)
+        this.error = err.error;
+      }
+    )
   }
 }

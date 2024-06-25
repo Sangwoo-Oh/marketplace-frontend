@@ -6,16 +6,15 @@
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form class="space-y-6" #signUpForm="ngForm" (ngSubmit)="this.signUp(signUpForm)">
-        {{ model | json }}
         <div>
-          <label for="Username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+          <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
           <div class="mt-2">
-            <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  [(ngModel)]="model.username" #username="ngModel">
+            <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  [(ngModel)]="model.username" #username="ngModel" minlength="6">
             <div [hidden]="username.valid || username.pristine" class="text-sm text-red-500">Username is required</div>
           </div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  [(ngModel)]="model.email" #email="ngModel" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  [(ngModel)]="model.email" #email="ngModel" pattern="">
             <div [hidden]="email.valid || email.pristine" class="text-sm text-red-500">Email address is required</div>
           </div>
           <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
@@ -33,11 +32,7 @@
         <div>
           <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-indigo-100" [disabled]="!signUpForm.valid">Sign up</button>
         </div>
+        <div *ngIf="this.error" class="text-sm text-red-500">{{this.error.error}}</div>
       </form>
-
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Not a member?
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
-      </p>
     </div>
   </div>
