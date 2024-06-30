@@ -3,7 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,15 +24,19 @@ export class SignUpComponent {
   }
 
   signUp(userData: NgForm) {
-    this.authService.signUp(userData).subscribe(
-      (result) => {
+    this.authService.signUp(userData).subscribe({
+      next : () => {
         console.log("Success!");
-        this.router.navigate(['/sign-in']);
+        this.router.navigate(['/sign-in'], {
+          queryParams: {
+            email: userData.value.email
+          }
+        });
       },
-      (err: HttpErrorResponse) => {
-        console.log(err)
+      error : (err) => {
+        console.log(err);
         this.error = err.error;
       }
-    )
+    });
   }
 }

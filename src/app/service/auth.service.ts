@@ -13,4 +13,8 @@ export class AuthService {
   signUp(userData: NgForm): Observable<any> {
     return this.httpClient.post(this.url + '/sign-up', userData.value);
   }
+
+  signIn(userData: NgForm): Observable<any> {
+    return this.httpClient.post(this.url + '/sign-in', userData.value);
+  }
 }
