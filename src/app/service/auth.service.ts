@@ -14,8 +14,11 @@ export class AuthService {
   httpClient: HttpClient = inject(HttpClient);
   private decodedToken;
   constructor() {
-    this.decodedToken = JSON.parse(localStorage.getItem("app-auth") || 'null')
+    this.decodedToken = JSON.parse(localStorage.getItem("app-meta") || 'null')
                         || {user_id : "", username : "", exp : 0 };
+  }
+  getToken() {
+    return localStorage.getItem('app-auth');
   }
 
   signUp(userData: NgForm): Observable<any> {
@@ -27,7 +30,8 @@ export class AuthService {
       map(
         (token)=>{
           this.decodedToken = jwtDecode(token.toString());
-          localStorage.setItem('app-auth',JSON.stringify(this.decodedToken));
+          localStorage.setItem('app-auth',token.toString());
+          localStorage.setItem('app-meta',JSON.stringify(this.decodedToken));
           return token;
         }
       )
