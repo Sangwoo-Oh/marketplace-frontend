@@ -31,7 +31,6 @@ export class SignInComponent {
   signIn(userData: NgForm) {
     this.authService.signIn(userData).subscribe({
       next : (result)=>{
-        console.log(result);
         this.router.navigate(['/']);
       },
       error: (err)=>{
