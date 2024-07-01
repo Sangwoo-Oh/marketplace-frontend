@@ -3,14 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Observable,map } from 'rxjs';
 import { jwtDecode } from "jwt-decode";
+import moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   url = 'http://localhost:3000/api/v1/users';
   httpClient: HttpClient = inject(HttpClient);
-  constructor() { }
+  private decodedToken;
+  constructor() {
+    this.decodedToken = JSON.parse(localStorage.getItem("app-auth") || 'null')
+                        || {user_id : "", username : "", exp : 0 };
+  }
+
   signUp(userData: NgForm): Observable<any> {
     return this.httpClient.post(this.url + '/sign-up', userData.value);
   }
@@ -19,11 +26,20 @@ export class AuthService {
     return this.httpClient.post(this.url + '/sign-in', userData.value).pipe(
       map(
         (token)=>{
-          const decoded = jwtDecode(token.toString());
-          localStorage.setItem('app-auth',JSON.stringify(decoded));
+          this.decodedToken = jwtDecode(token.toString());
+          localStorage.setItem('app-auth',JSON.stringify(this.decodedToken));
           return token;
         }
       )
     );
+  }
+
+  isAuthenticated() {
+    return moment().isBefore(moment.unix(this.decodedToken.exp));
+  }
+
+  logout() {
+    localStorage.removeItem('app-auth');
+    this.decodedToken = {user_id : "", username : "", exp : 0 };
   }
 }
