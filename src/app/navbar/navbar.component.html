@@ -8,7 +8,7 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-center space-x-4">
               <!-- <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Sell</a> -->
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Sell</a>
+              <a routerLink="/sell" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Sell</a>
               <ng-container *ngIf="!this.authService.isAuthenticated()">
                 <a routerLink="/sign-up" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Sign up</a>
                 <a routerLink="/sign-in" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign in</a>

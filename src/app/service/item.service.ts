@@ -17,4 +17,8 @@ export class ItemService {
   getItemById(id: string): Observable<Item> {
     return this.httpClient.get<Item>(this.url + '/' + id);
   }
+
+  createItem(formData: FormData): Observable<any> {
+    return this.httpClient.post(this.url + '/item', formData);
+  }
 }
