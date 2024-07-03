@@ -4,6 +4,7 @@ import { ItemService } from '../service/item.service';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { RouterModule } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-top-page',
@@ -14,9 +15,11 @@ import { RouterModule } from '@angular/router';
 })
 
 export class TopPageComponent {
-  items:Observable<Item[]>;
+  items!: Item[];
   itemService:ItemService = inject(ItemService);
   constructor() {
-    this.items = this.itemService.getItems();
+    this.itemService.getItems().subscribe((data) => {
+      this.items = data;
+    })
   }
 }

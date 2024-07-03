@@ -13,9 +13,9 @@
     </header>
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h2 class="text-2xl mb-4">Trending on Marketplace</h2>
-        <div class="flex flex-wrap justify-between">
-          <div *ngFor='let item of this.items | async' class="w-60">
+        <h2 class="text-2xl mb-4">New items on Marketplace</h2>
+        <div *ngIf='this.items' class="flex flex-wrap space-x-10">
+          <div *ngFor='let item of this.items' class="w-60">
             <a [routerLink]="['itm', item._id]" class="hover:underline">
               <img src="{{item.image_url}}" alt="">
               <div class="mt-2">{{item.name}}</div>
@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <!-- <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <h2 class="text-2xl mb-4">New added items</h2>
         <div class="flex flex-wrap justify-between">
           <div class="w-60">
@@ -56,6 +56,6 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
   </div>

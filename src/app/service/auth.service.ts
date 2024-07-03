@@ -44,6 +44,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('app-auth');
+    localStorage.removeItem('app-meta');
     this.decodedToken = {user_id : "", username : "", exp : 0 };
   }
 }
