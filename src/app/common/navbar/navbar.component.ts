@@ -16,11 +16,17 @@ export class NavbarComponent {
   authService: AuthService = inject(AuthService);
   router: Router = inject(Router);
   user: User | null = null;
+  username: string;
   subscription: Subscription;
 
   constructor() {
-    this.subscription = this.authService.getUsername();
-    this.subscription = this.authService.signedInUser$.subscribe({next:(data)=>{this.user = data}})
+    this.username = this.authService.getUsername();
+    this.subscription = this.authService.signedInUser$.subscribe({
+      next: (data) =>{
+        this.user = data;
+        this.username = this.user.username;
+      }
+    });
   }
   logout() {
     this.authService.logout();
