@@ -7,14 +7,14 @@ import { RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-top-page',
+  selector: 'app-listing',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './top-page.component.html',
-  styleUrl: './top-page.component.scss'
+  templateUrl: './listing.component.html',
+  styleUrl: './listing.component.scss'
 })
 
-export class TopPageComponent {
+export class ListingComponent {
   items!: Item[];
   itemService:ItemService = inject(ItemService);
   constructor() {

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopPageComponent } from './top-page.component';
+import { PurchaseComponent } from './purchase.component';
 
-describe('TopPageComponent', () => {
-  let component: TopPageComponent;
-  let fixture: ComponentFixture<TopPageComponent>;
+describe('PurchaseComponent', () => {
+  let component: PurchaseComponent;
+  let fixture: ComponentFixture<PurchaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopPageComponent]
+      imports: [PurchaseComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TopPageComponent);
+    fixture = TestBed.createComponent(PurchaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
