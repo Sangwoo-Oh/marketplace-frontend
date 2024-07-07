@@ -10,4 +10,5 @@ export interface Item {
     description: string;
     price: number;
     image_url: string;
+    is_purchased: boolean;
 }

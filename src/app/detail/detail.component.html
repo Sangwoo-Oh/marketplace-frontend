@@ -20,7 +20,7 @@
                     <div class="mb-2">{{this.item.price}}</div>
                     <div class="mb-2">{{this.item.category.name}}</div>
                     <div class="mb-4">{{this.item.description}}</div>
-                    <button class="mb-2 bg-blue-600 text-white block w-full rounded-full p-1">Buy it now</button>
+                    <button [routerLink]="['purchase']" class="mb-2 bg-blue-600 text-white block w-full rounded-full p-1">Buy it now</button>
                     <button class="border-blue-600 border-solid border text-blue-600 block w-full rounded-full p-1">Add to watchlist</button>
                 </div>
             </div>

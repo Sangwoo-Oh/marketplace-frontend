@@ -16,7 +16,8 @@
         <h2 class="text-2xl mb-4">New items on Marketplace</h2>
         <div *ngIf='this.items' class="flex flex-wrap space-x-10">
           <div *ngFor='let item of this.items' class="w-60">
-            <a [routerLink]="['itm', item._id]" class="hover:underline">
+            <a [routerLink]="['itm', item._id]" [ngClass]="item.is_purchased?'disabled ':''" class="hover:underline relative">
+              <div [ngClass]="item.is_purchased?'absolute h-full w-full bg-black opacity-50':''"></div>
               <img src="{{item.image_url}}" alt="">
               <div class="mt-2">{{item.name}}</div>
               <div class="mt-2">{{item.price}}</div>
@@ -24,38 +25,5 @@
           </div>
         </div>
       </div>
-      <!-- <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h2 class="text-2xl mb-4">New added items</h2>
-        <div class="flex flex-wrap justify-between">
-          <div class="w-60">
-            <a href="#" class="hover:underline">
-              <img src="assets/placeholder.jpeg" alt="">
-              <div class="mt-2">ProductA</div>
-              <div class="mt-2">Price</div>
-            </a>
-          </div>
-          <div class="w-60">
-            <a href="#" class="hover:underline">
-              <img src="assets/placeholder.jpeg" alt="">
-              <div class="mt-2">ProductA</div>
-              <div class="mt-2">Price</div>
-            </a>
-          </div>
-          <div class="w-60">
-            <a href="#" class="hover:underline">
-              <img src="assets/placeholder.jpeg" alt="">
-              <div class="mt-2">ProductA</div>
-              <div class="mt-2">Price</div>
-            </a>
-          </div>
-          <div class="w-60">
-            <a href="#" class="hover:underline">
-              <img src="assets/placeholder.jpeg" alt="">
-              <div class="mt-2">ProductA</div>
-              <div class="mt-2">Price</div>
-            </a>
-          </div>
-        </div>
-      </div> -->
     </main>
   </div>
