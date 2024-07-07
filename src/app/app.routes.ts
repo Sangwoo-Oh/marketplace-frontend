@@ -10,7 +10,7 @@ import { SellComponent } from './sell/sell.component';
 export const routes: Routes = [
     { path: '', component: TopPageComponent },
     { path: 'cat', component: CategoryComponent },
-    { path: 'itm/:id', component: DetailComponent, canActivate: [AuthGuard] },
+    { path: 'itm/:id', component: DetailComponent },
     { path: 'sell', component: SellComponent, canActivate: [AuthGuard]},
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
