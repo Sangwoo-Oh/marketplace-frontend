@@ -12,7 +12,7 @@
             </div>
             <div class="w-3/4">
                 <section class="mb-5">
-                    <div class="text-2xl mb-5">Listed Items</div>
+                    <div class="text-2xl mb-5 pb-5 border-b">Listed Items</div>
                     <ul *ngIf="this.listingItems.length > 0; else noItem" class="flex flex-wrap gap-5">
                         <li *ngFor='let item of this.listingItems'>
                             <a [routerLink]="['/itm', item._id]" class="relative">
@@ -32,7 +32,7 @@
                     </ul>
                 </section>
                 <section>
-                    <div class="text-2xl mb-5">Purchased Items</div>
+                    <div class="text-2xl mb-5 pb-5 border-b">Purchased Items</div>
                     <ul *ngIf="this.purchasedItems.length > 0; else noItem" class="flex flex-wrap gap-5">
                         <li *ngFor='let item of this.purchasedItems'>
                             <a [routerLink]="['/itm', item._id]" class="relative">

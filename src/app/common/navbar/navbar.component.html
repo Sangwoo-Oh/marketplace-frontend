@@ -5,7 +5,7 @@
           <div class="flex-shrink-0">
             <a routerLink="/" class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight dark:text-slate-200">Marketplace</a>
           </div>
-          <div class="hidden md:block">
+          <div>
             <div class="ml-10 flex items-center space-x-4">
               <a routerLink="/sell" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Sell</a>
               <ng-container *ngIf="!this.authService.isAuthenticated()">
@@ -13,12 +13,12 @@
                 <a routerLink="/sign-in" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign in</a>
               </ng-container>
               <ng-container *ngIf="this.authService.isAuthenticated()">
-                <a [routerLink]="['/my-page']" class="rounded-full bg-gray-400 px-3 py-2 text-sm font-medium text-white">{{ username }}</a>
-                <a (click)="logout()" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer">Logout</a>
+                <a routerLink="/my-page" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">My page ( {{ username }} )</a>
+                <a (click)="logout()" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer">Sign out</a>
               </ng-container>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </nav>
+</nav>

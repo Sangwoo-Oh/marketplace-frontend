@@ -18,6 +18,7 @@ export class NavbarComponent {
   user: User | null = null;
   username: string;
   subscription: Subscription;
+  showDropdown: boolean = false;
 
   constructor() {
     this.username = this.authService.getUsername();
@@ -31,5 +32,8 @@ export class NavbarComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+  toggleDropdown() {
+    this.showDropdown = this.showDropdown ? false : true;
   }
 }
