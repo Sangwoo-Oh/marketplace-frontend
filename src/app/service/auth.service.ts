@@ -5,13 +5,14 @@ import { Observable,Subject,map } from 'rxjs';
 import { jwtDecode } from "jwt-decode";
 import moment from 'moment';
 import { User } from '../interface/user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  url = 'http://localhost:3000/api/v1/users';
+  url = environment.apiUrl + 'users';
   httpClient: HttpClient = inject(HttpClient);
   private decodedToken;
   private signedInUser = new Subject<User>();
