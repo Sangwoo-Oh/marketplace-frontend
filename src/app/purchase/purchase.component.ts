@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../common/header/header.component';
 import { ItemService } from '../service/item.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Item } from '../interface/item';
 import { PurchaseService } from '../service/purchase.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-purchase',
@@ -16,7 +17,9 @@ import { PurchaseService } from '../service/purchase.service';
 export class PurchaseComponent {
   itemService: ItemService = inject(ItemService);
   purchaseService: PurchaseService = inject(PurchaseService);
+  authService: AuthService = inject(AuthService);
   route: ActivatedRoute = inject(ActivatedRoute);
+  router: Router = inject(Router);
   item!: Item;
   purchaseClicked: boolean = false;
   purchaseCompleted: boolean = false;
@@ -25,6 +28,9 @@ export class PurchaseComponent {
     const id = this.route.snapshot.params['id'];
     this.itemService.getItemById(id).subscribe((data)=>{
       this.item = data;
+      if(this.item.seller._id == this.authService.getUser().user_id) {
+        this.router.navigate(['/itm/', id]);
+      }
     });
     this.purchaseClicked = false;
     this.purchaseCompleted = false;

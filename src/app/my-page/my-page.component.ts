@@ -7,11 +7,12 @@ import { HeaderComponent } from '../common/header/header.component';
 import { ItemService } from '../service/item.service';
 import { Item } from '../interface/item';
 import { PurchaseService } from '../service/purchase.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-my-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, RouterLink],
   templateUrl: './my-page.component.html',
   styleUrl: './my-page.component.scss'
 })
