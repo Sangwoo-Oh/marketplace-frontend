@@ -38,6 +38,10 @@ export class AuthService {
     return this.decodedToken.username;
   }
 
+  getUser() {
+    return this.decodedToken;
+  }
+
   signUp(userData: NgForm): Observable<any> {
     return this.httpClient.post(this.url + '/sign-up', userData.value);
   }
