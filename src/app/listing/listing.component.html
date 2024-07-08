@@ -1,14 +1,21 @@
 <div class="min-h-full">
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h2 class="text-2xl mb-4">New items on Marketplace</h2>
-        <div *ngIf='this.items' class="flex flex-wrap space-x-10">
-          <div *ngFor='let item of this.items' class="w-60">
-            <a [routerLink]="['itm', item._id]" [ngClass]="item.is_purchased?'disabled ':''" class="hover:underline relative">
-              <div [ngClass]="item.is_purchased?'absolute h-full w-full bg-black opacity-50':''"></div>
-              <img src="{{item.image_url}}" alt="">
-              <div class="mt-2">{{item.name}}</div>
-              <div class="mt-2">{{item.price}}</div>
+        <h2 class="text-2xl mb-4">Items on Marketplace</h2>
+        <div *ngIf='this.items' class="flex flex-wrap gap-10">
+          <div *ngFor='let item of this.items' class="w-60 bg-white rounded-lg shadow">
+            <a [routerLink]="['itm', item._id]" class="hover:underline relative">
+              <div [ngClass]="item.is_purchased?'absolute h-full w-full flex justify-center items-center':'hidden'">
+                <span class="absolute z-10 text-white text-2xl -rotate-12">Sold out</span>
+                <div class="h-full w-full bg-black opacity-50 rounded-lg"></div>
+              </div>
+              <div class="p-5">
+                <figure class="mb-5">
+                  <img src="{{item.image_url}}" alt="">
+                </figure>
+                <div>{{item.name}}</div>
+                <div>{{item.price}}</div>
+              </div>
             </a>
           </div>
         </div>

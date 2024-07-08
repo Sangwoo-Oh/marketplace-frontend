@@ -6,7 +6,7 @@ export interface Item {
     public_date: Date;
     name: string;
     seller: User;
-    category: Category;
+    category?: Category;
     description: string;
     price: number;
     image_url: string;

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ItemService } from '../service/item.service';
-import { CategoryService } from '../service/category.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,19 +13,14 @@ import { Router } from '@angular/router';
 })
 export class SellComponent {
   itemService:ItemService = inject(ItemService);
-  categoryService:CategoryService = inject(CategoryService);
   router:Router = inject(Router);
   file: File | null = null;
-  categories;
   model = {
     name:"",
     description:"",
-    category:"",
     price:"",
   }
-  constructor() {
-    this.categories = this.categoryService.getCategories();
-  }
+  constructor() {}
   onChange(event: any) {
     const file: File = event.target.files[0];
     if (file) {
@@ -40,7 +34,6 @@ export class SellComponent {
 
       formData.append('name', this.model.name);
       formData.append('description', this.model.description);
-      formData.append('category', this.model.category);
       formData.append('price', this.model.price);
       formData.append('file', this.file, this.file.name);
 
