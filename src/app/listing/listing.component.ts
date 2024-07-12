@@ -20,7 +20,7 @@ export class ListingComponent {
   itemService:ItemService = inject(ItemService);
   constructor() {
     this.itemService.getItems().subscribe((data) => {
-      // this.items = data;
+      this.items = data;
     });
     setTimeout(() => {
       if (!this.items) {
