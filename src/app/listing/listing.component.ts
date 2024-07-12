@@ -15,11 +15,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 export class ListingComponent {
+  delay = false;
   items!: Item[];
   itemService:ItemService = inject(ItemService);
   constructor() {
     this.itemService.getItems().subscribe((data) => {
-      this.items = data;
-    })
+      // this.items = data;
+    });
+    setTimeout(() => {
+      if (!this.items) {
+        this.delay = true;
+      }
+    }, 1500);
   }
 }
